@@ -1,0 +1,18 @@
+ name: .NET API CI/CD Pipeline
+ on:
+   push:
+     branches:
+       - '**'
+   pull_request:
+     branches:
+       - '**'
+   workflow_dispatch:
+ jobs:
+   build-and-deploy:
+     uses: Grupo-Postech-Fiap05/pipeline-net-core/.github/workflows/app-dispatcher.yml@5ac6f8ba4f2473b769fc950ea53613a5872cec3e
+     with:
+       nome_projeto: 'AgroSolutions.Service'
+       nome_csproj: 'AgroSolutions.Service' #informar apenas o nome sem o csproj apenas o nome do projeto
+       nome_csproj_tests: 'AgroSolutions.Sensor.Tests' #informar apenas o nome sem o csproj apenas o nome do projeto
+       nome_imagem: 'az-function-dados-sensor-cronjob'
+       porta_pod: 8081
